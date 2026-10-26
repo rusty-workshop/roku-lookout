@@ -1,4 +1,4 @@
-' Sunroom: a wall display for the Flex Room Roku. The same scene runs as the
+' Lookout: a wall display for the Family room Roku. The same scene runs as the
 ' channel and as the Roku's screensaver, so it stays up when nobody's
 ' touching the remote.
 
@@ -14,7 +14,7 @@ sub showScene(isScreensaver as Boolean)
     screen = CreateObject("roSGScreen")
     port = CreateObject("roMessagePort")
     screen.setMessagePort(port)
-    scene = screen.CreateScene("SunroomScene")
+    scene = screen.CreateScene("LookoutScene")
     scene.screensaver = isScreensaver
     screen.show()
     while true

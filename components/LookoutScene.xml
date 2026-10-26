@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component name="SunroomScene" extends="Scene">
+<component name="LookoutScene" extends="Scene">
     <interface>
         <field id="screensaver" type="boolean" value="false" />
     </interface>
-    <script type="text/brightscript" uri="SunroomScene.brs" />
+    <script type="text/brightscript" uri="LookoutScene.brs" />
     <children>
         <Rectangle width="1920" height="1080" color="0x0F1115FF" />
 

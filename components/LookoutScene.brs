@@ -1,4 +1,4 @@
-' Three screens fed by latitude-sunroom's /api/feed: clock + weather, homelab
+' Three screens fed by latitude-lookout's /api/feed: clock + weather, homelab
 ' status, chess. They rotate on their own every 30 seconds; left/right flips
 ' by hand and pauses the rotation for five minutes.
 

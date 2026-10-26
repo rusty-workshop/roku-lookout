@@ -1,7 +1,7 @@
-# roku-sunroom
+# roku-lookout
 
-A wall-display channel for the Flex Room Roku Streambar (192.168.1.79).
-Three screens, fed by [latitude-sunroom](../latitude-sunroom)'s
+**Lookout**: a wall-display channel for the Family room Roku Express 4K+ (192.168.1.78), which sits behind the receiver on the Sony's HDMI 1.
+Three screens, fed by [latitude-lookout](../latitude-lookout)'s
 `http://192.168.1.158:8473/api/feed`:
 
 1. **Clock + weather**: big clock and date, Jacksonville conditions,
@@ -17,7 +17,7 @@ every screen (red for severe, amber for moderate).
 
 The screens rotate every 30 seconds. Left/right on the remote flips by hand
 and pauses rotation for 5 minutes. The same scene is the channel's
-**screensaver** (`RunScreenSaver`), so pick "Sunroom" under Settings → Theme →
+**screensaver** (`RunScreenSaver`), so pick "Lookout" under Settings → Theme →
 Screensaver to have it come back on its own.
 
 Roku allows only one sideloaded channel per device, which is why the three
@@ -27,12 +27,12 @@ ideas live in one channel.
 
 1. On the Roku remote: Home ×3, Up ×2, Right, Left, Right, Left, Right.
    Enable the installer, accept the license, set a password. The Roku reboots.
-2. `zip -r dist/sunroom.zip manifest source components images`
-3. Open `http://192.168.1.79` in a browser, log in as `rokudev` with that
-   password, upload `dist/sunroom.zip`, Install.
+2. `zip -r dist/lookout.zip manifest source components images`
+3. Open `http://192.168.1.78` in a browser, log in as `rokudev` with that
+   password, upload `dist/lookout.zip`, Install.
 
 Errors and `print` output show on the Roku's debug console:
-`nc 192.168.1.79 8085`.
+`nc 192.168.1.78 8085`.
 
 ## License
 
