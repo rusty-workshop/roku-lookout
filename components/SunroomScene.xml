@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="SunroomScene" extends="Scene">
+    <interface>
+        <field id="screensaver" type="boolean" value="false" />
+    </interface>
+    <script type="text/brightscript" uri="SunroomScene.brs" />
+    <children>
+        <Rectangle width="1920" height="1080" color="0x0F1115FF" />
+
+        <!-- 1. Clock + weather -->
+        <Group id="clockPage">
+            <Label id="bigTime" translation="[120,150]" color="0xFFFFFFFF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="230" />
+            </Label>
+            <Label id="bigDate" translation="[130,440]" color="0x9A9CABFF">
+                <Font role="font" uri="font:SystemFontFile" size="56" />
+            </Label>
+
+            <Label id="temp" translation="[1180,150]" color="0xFFFFFFFF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="170" />
+            </Label>
+            <Label id="summary" translation="[1190,365]" color="0xAA5CC3FF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="52" />
+            </Label>
+            <Label id="details" translation="[1190,440]" color="0x9A9CABFF" width="640" wrap="true" lineSpacing="10">
+                <Font role="font" uri="font:SystemFontFile" size="36" />
+            </Label>
+
+            <Rectangle translation="[120,700]" width="1680" height="2" color="0x262A33FF" />
+            <Group id="hours" translation="[120,740]" />
+        </Group>
+
+        <!-- 2. Homelab status -->
+        <Group id="statusPage" visible="false">
+            <Label text="Homelab" translation="[120,80]" color="0xFFFFFFFF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="76" />
+            </Label>
+            <Label id="statusSummary" translation="[120,180]" color="0x9A9CABFF">
+                <Font role="font" uri="font:SystemFontFile" size="38" />
+            </Label>
+            <Group id="serviceGrid" translation="[120,270]" />
+
+            <Label text="BACKUP" translation="[1360,270]" color="0xAA5CC3FF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="30" />
+            </Label>
+            <Label id="backupText" translation="[1360,315]" color="0xFFFFFFFF" width="460" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="40" />
+            </Label>
+
+            <Label text="DVD RIPPER" translation="[1360,500]" color="0xAA5CC3FF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="30" />
+            </Label>
+            <Label id="ripperText" translation="[1360,545]" color="0xFFFFFFFF" width="460" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="40" />
+            </Label>
+            <Rectangle id="ripperBarBg" translation="[1360,720]" width="460" height="16" color="0x262A33FF" visible="false" />
+            <Rectangle id="ripperBar" translation="[1360,720]" width="0" height="16" color="0xAA5CC3FF" visible="false" />
+        </Group>
+
+        <!-- 3. Chess -->
+        <Group id="chessPage" visible="false">
+            <Label text="Chess" translation="[120,80]" color="0xFFFFFFFF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="76" />
+            </Label>
+            <Label id="chessSummary" translation="[120,180]" color="0x9A9CABFF">
+                <Font role="font" uri="font:SystemFontFile" size="38" />
+            </Label>
+            <Poster id="board1" translation="[120,270]" width="560" height="560" />
+            <Label id="game1" translation="[120,850]" width="560" color="0xFFFFFFFF" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="38" />
+            </Label>
+            <Poster id="board2" translation="[780,270]" width="560" height="560" />
+            <Label id="game2" translation="[780,850]" width="560" color="0xFFFFFFFF" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="38" />
+            </Label>
+            <Label id="noGames" translation="[120,420]" width="1680" horizAlign="center" color="0x9A9CABFF"
+                   text="No games in progress" visible="false">
+                <Font role="font" uri="font:SystemFontFile" size="56" />
+            </Label>
+            <Label id="moreGames" translation="[1440,300]" width="380" color="0x9A9CABFF" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="34" />
+            </Label>
+        </Group>
+
+        <!-- Small clock on the status and chess screens -->
+        <Label id="cornerTime" translation="[1500,95]" width="300" horizAlign="right" color="0x9A9CABFF" visible="false">
+            <Font role="font" uri="font:BoldSystemFontFile" size="56" />
+        </Label>
+
+        <Group id="dots" translation="[915,1030]" />
+
+        <Timer id="clockTimer" duration="1" repeat="true" />
+        <Timer id="feedTimer" duration="60" repeat="true" />
+        <Timer id="rotateTimer" duration="30" repeat="true" />
+    </children>
+</component>
