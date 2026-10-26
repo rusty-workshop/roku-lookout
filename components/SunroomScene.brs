@@ -103,9 +103,12 @@ sub onFeed(event as Object)
     data = event.getData()
     if data = invalid or data.error <> invalid then return  ' keep showing the last good feed
     m.feed = data
-    showWeather(data.weather)
+    showWeather(data.weather, data.air)
+    showIss(data.iss)
+    showAlerts(data.alerts)
     showStatus(data)
     showChess(data.chess)
+    showPuzzle(data.puzzle)
 end sub
 
 function hour12(hhmm as String) as String
@@ -126,7 +129,7 @@ function time12(hhmm as String) as String
     return hh.ToStr() + ":" + Mid(hhmm, 4, 2) + suffix
 end function
 
-sub showWeather(w as Object)
+sub showWeather(w as Object, air as Object)
     if w = invalid then return
     m.top.findNode("temp").text = w.temp.ToStr() + "°"
     m.top.findNode("summary").text = w.summary
@@ -134,6 +137,9 @@ sub showWeather(w as Object)
     lines = lines + "Feels like " + w.feels.ToStr() + "°  ·  Humidity " + w.humidity.ToStr() + "%" + Chr(10)
     lines = lines + "Wind " + w.wind.ToStr() + " mph  ·  Rain " + w.rain.ToStr() + "%" + Chr(10)
     lines = lines + "Sunrise " + time12(w.sunrise) + "  ·  Sunset " + time12(w.sunset)
+    if air <> invalid
+        lines = lines + Chr(10) + "Air " + air.aqi.ToStr() + " (" + air.aqiLabel + ")  ·  UV " + air.uv.ToStr() + " " + air.uvLabel + ", max " + w.uvMax.ToStr()
+    end if
     m.top.findNode("details").text = lines
 
     row = m.top.findNode("hours")
@@ -145,6 +151,51 @@ sub showWeather(w as Object)
         addLabel(row, h.summary, [x, 140], 30, "0x9A9CABFF", false, 260)
         x = x + 280
     end for
+end sub
+
+sub showIss(iss as Object)
+    label = m.top.findNode("issText")
+    if iss = invalid
+        label.text = ""
+    else
+        label.text = "Space station overhead " + iss.when + "  ·  " + iss.maxElevation.ToStr() + "° up  ·  " + iss.minutes.ToStr() + " min"
+    end if
+end sub
+
+' Most severe alert first; red for Extreme/Severe, amber for Moderate, grey otherwise.
+sub showAlerts(alerts as Object)
+    bar = m.top.findNode("alertBar")
+    if alerts = invalid or alerts.Count() = 0
+        bar.visible = false
+        return
+    end if
+    a = alerts[0]
+    text = "WEATHER ALERT  ·  " + a.event
+    if a.until <> invalid then text = text + " until " + a.until
+    if alerts.Count() > 1 then text = text + "  ·  +" + (alerts.Count() - 1).ToStr() + " more"
+    m.top.findNode("alertText").text = text
+    if a.severity = "Extreme" or a.severity = "Severe"
+        bar.color = "0xB91C1CFF"
+    else if a.severity = "Moderate"
+        bar.color = "0xB45309FF"
+    else
+        bar.color = "0x3A3E4AFF"
+    end if
+    bar.visible = true
+end sub
+
+sub showPuzzle(p as Object)
+    board = m.top.findNode("puzzleBoard")
+    label = m.top.findNode("puzzleText")
+    if p = invalid
+        board.visible = false
+        label.text = ""
+        return
+    end if
+    board.uri = server() + p.board
+    board.visible = true
+    if p.color = "white" then side = "White" else side = "Black"
+    label.text = side + " to move" + Chr(10) + "Rated " + p.rating.ToStr()
 end sub
 
 sub showStatus(data as Object)

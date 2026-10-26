@@ -5,12 +5,15 @@ Three screens, fed by [latitude-sunroom](../latitude-sunroom)'s
 `http://192.168.1.158:8473/api/feed`:
 
 1. **Clock + weather**: big clock and date, Jacksonville conditions,
-   high/low, feels-like, humidity, wind, rain chance, sunrise/sunset, and the
-   next 12 hours.
+   high/low, feels-like, humidity, wind, rain chance, sunrise/sunset, air
+   quality and UV, the next visible space station pass, and the next 12 hours.
 2. **Homelab**: green/red status for the Latitude's services, last backup,
    and what the DVD ripper is doing (with a progress bar).
 3. **Chess**: Lichess correspondence games from Gambit with board images,
-   whose move it is, and ratings.
+   whose move it is, ratings, and the Lichess daily puzzle's position.
+
+Active National Weather Service alerts show as a banner across the top of
+every screen (red for severe, amber for moderate).
 
 The screens rotate every 30 seconds. Left/right on the remote flips by hand
 and pauses rotation for 5 minutes. The same scene is the channel's

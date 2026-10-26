@@ -16,6 +16,10 @@
                 <Font role="font" uri="font:SystemFontFile" size="56" />
             </Label>
 
+            <Label id="issText" translation="[130,545]" width="980" color="0x9A9CABFF">
+                <Font role="font" uri="font:SystemFontFile" size="36" />
+            </Label>
+
             <Label id="temp" translation="[1180,150]" color="0xFFFFFFFF">
                 <Font role="font" uri="font:BoldSystemFontFile" size="170" />
             </Label>
@@ -73,14 +77,29 @@
             <Label id="game2" translation="[780,850]" width="560" color="0xFFFFFFFF" wrap="true">
                 <Font role="font" uri="font:SystemFontFile" size="38" />
             </Label>
-            <Label id="noGames" translation="[120,420]" width="1680" horizAlign="center" color="0x9A9CABFF"
+            <Label id="noGames" translation="[120,420]" width="1220" horizAlign="center" color="0x9A9CABFF"
                    text="No games in progress" visible="false">
                 <Font role="font" uri="font:SystemFontFile" size="56" />
             </Label>
-            <Label id="moreGames" translation="[1440,300]" width="380" color="0x9A9CABFF" wrap="true">
+            <Label id="moreGames" translation="[1420,920]" width="400" color="0x9A9CABFF" wrap="true">
+                <Font role="font" uri="font:SystemFontFile" size="34" />
+            </Label>
+
+            <Label text="DAILY PUZZLE" translation="[1420,240]" color="0xAA5CC3FF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="30" />
+            </Label>
+            <Poster id="puzzleBoard" translation="[1420,290]" width="400" height="400" />
+            <Label id="puzzleText" translation="[1420,710]" width="400" color="0xFFFFFFFF" wrap="true">
                 <Font role="font" uri="font:SystemFontFile" size="34" />
             </Label>
         </Group>
+
+        <!-- Weather alert banner, over every screen while one is active -->
+        <Rectangle id="alertBar" width="1920" height="60" color="0xB91C1CFF" visible="false">
+            <Label id="alertText" translation="[120,10]" width="1680" color="0xFFFFFFFF">
+                <Font role="font" uri="font:BoldSystemFontFile" size="34" />
+            </Label>
+        </Rectangle>
 
         <!-- Small clock on the status and chess screens -->
         <Label id="cornerTime" translation="[1500,95]" width="300" horizAlign="right" color="0x9A9CABFF" visible="false">
