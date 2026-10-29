@@ -1,7 +1,7 @@
 # roku-lookout
 
 **Lookout**: a wall-display channel for the Family room Roku Express 4K+ (192.168.1.78), which sits behind the receiver on the Sony's HDMI 1.
-Three screens, fed by [latitude-lookout](../latitude-lookout)'s
+Three screens, fed by [lookout-feed](https://github.com/rusty-workshop/latitude-services/tree/main/lookout-feed)'s
 `http://192.168.1.158:8473/api/feed`:
 
 1. **Clock + weather**: big clock and date, Jacksonville conditions,
